@@ -31,8 +31,7 @@ class personaje:
         print(".HP", self.HP)
         print(".MP", self.MP)
         
-######METODOS DE PERSONAJE VAN AQUI#############
-            
+#############METODOS DE PERSONAJE VAN AQUI#############
 
 class investigador(personaje):
     
@@ -62,6 +61,18 @@ class policia(personaje):
         print(".Revolver", self.revolver)
         print(".porra", self.porra)
         
+class escritor(personaje):
+    
+    def __init__(self, nombre, fuerza, constitucion, tamaño, destreza, apariencia, inteligencia, educacion, poder, revolver):
+        super().__init__(nombre, fuerza, constitucion, tamaño, destreza, apariencia, inteligencia, educacion, poder)
+        self.revolver = revolver
+        
+########METODOS DE POLICIA VAN AQUI#############
+    
+    def atributos(self):
+        super().atributos()
+        print(".Revolver", self.revolver)
+        
         
 #### USO DEL CONSTRUCTOR ####
 # Almacenar en una variable, subclase(Atributo, atributo....)
@@ -70,3 +81,4 @@ class policia(personaje):
 anna = personaje("Anna Williams", dados(3,6), dados(3,6), dados(3,6), dados(3,6), dados(3,6), dados(3,6), dados(3,6), dados(3,6))
 sebastian = policia("Sebastian Martinez", dados(3,6), dados(3,6), dados(3,6), dados(3,6), dados(3,6), dados(3,6), dados(3,6), dados(3,6), 12, 4)
 john = investigador("John Williams", dados(3,6), dados(3,6), dados(3,6), dados(3,6), dados(3,6), dados(3,6), dados(3,6), dados(3,6), 10, 6)
+jacinto = escritor("Jacinto Perez",  dados(3,6), dados(3,6), dados(3,6), dados(3,6), dados(3,6), dados(3,6), dados(3,6), dados(3,6), 10)

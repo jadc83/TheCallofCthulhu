@@ -26,15 +26,30 @@ class criatura:
         print(".POD:", self.POD)
         print(".HP", self.HP)
         print(".MP", self.MP)
+        
+#######SUBCLASE PRIMIGENIO###########
 
 class primigenio(criatura):
     
     def __init__(self, nombre, fuerza, constitucion, tamaño, destreza, inteligencia, poder):
         super().__init__(nombre, fuerza, constitucion, tamaño, destreza, inteligencia, poder)
         
-########METODOS DE PRIMIGENIO VAN AQUI#############
+#METODOS DE PRIMIGENIO VAN AQUI#
+    
+    def atributos(self):    
+        super().atributos()
+
+##############SUBCLASE DIOSES MENORES######################
+        
+class diosmenor(criatura):
+    
+    def __init__(self, nombre, fuerza, constitucion, tamaño, destreza, inteligencia, poder):
+        super().__init__(nombre, fuerza, constitucion, tamaño, destreza, inteligencia, poder)
+        
+#METODOS DE DIOSES MENORES VAN AQUI#
     
     def atributos(self):    
         super().atributos()
         
 cthulhu = primigenio("Cthulhu", dados(24,6), dados(50,6), dados(50,6), dados(19,6), dados(55,6), dados(600,6))
+Nodens = diosmenor("Nodens", dados(20,6), dados(24,6), dados(24,6), dados(24,6), dados(24,6), dados(24,6))
