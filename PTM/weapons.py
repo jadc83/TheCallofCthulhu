@@ -1,3 +1,4 @@
+import sys
 class armabasica:
     
     def __init__(self, nombre, tipo, daño, uxt, critico, resistencia, peso, precio, disponible):
@@ -12,19 +13,10 @@ class armabasica:
         self.PRICE = precio
         self.DIS = disponible
 
-
     def atributos(self):
         """Muestra los atributos"""
         print(".Nombre:", self.nombre)
         print(".Tipo:", self.TIPO)
-        print(".daño:", self.DAÑO)
-        print(".Usos por turno", self.UXT)
-        print(".Critico:", self.CRIT)
-        print(".Resistencia:", self.RES)
-        print(".Peso:", self.WEIGHT)
-        print(".Precio:", self.PRICE)
-        print(".Disponibilidad", self.DIS)
-
 
 
 
@@ -43,17 +35,26 @@ class armaproyectil(armabasica):
         print(".Cargador:", self.CARGADOR)
         print(".Balas", self.BALAS)
         
+        
     def disparar(self):
+        if self.BALAS == 0:
+            print("Oops...")
+        else:
             for x in range(1, self.UXT + 1):
-                if self.BALAS > 0:
-                    self.BALAS -= 1
-                    print("Bang!")
-                else:
-                    print("click!")
+                print("Bang!")
+                self.BALAS = self.BALAS - 1
+               
+                
+    def recargar(self):
+        while self.BALAS != self.CARGADOR:
+            self.BALAS = self.BALAS + 1
+            print("Plink.")
     
-    def recargar(self,cantidad):
-        if self.BALAS == 0 and cantidad == "full":
-            self.BALAS = 6
+    
+    def descargar(self):
+        while self.BALAS > 0:
+            self.BALAS = self.BALAS - 1
+            print("Plonk.")
             
 
 cuchillo = armabasica("Cuchillo", "CC", 4, 2, 33, 10, 1, 5, "Si")
