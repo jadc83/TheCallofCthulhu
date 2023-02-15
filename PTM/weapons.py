@@ -1,12 +1,12 @@
 import sys
 class armabasica:
     
-    def __init__(self, nombre, tipo, daño, uxt, critico, resistencia, peso, precio, disponible):
+    def __init__(self, nombre, tipo, daño, usos, critico, resistencia, peso, precio, disponible):
         """Metodo constructor."""
         self.nombre = nombre
         self.TIPO = tipo
         self.DAÑO = daño
-        self.UXT = uxt
+        self.USOS = usos
         self.CRIT = critico
         self.RES = resistencia
         self.WEIGHT = peso
@@ -17,11 +17,12 @@ class armabasica:
         """Muestra los atributos"""
         print(".Nombre:", self.nombre)
         print(".Tipo:", self.TIPO)
+        print(".Usos por turno:", self.USOS)
 
 class armaproyectil(armabasica):
     
-    def __init__(self, nombre, tipo, daño, uxt, critico, resistencia, peso, precio, disponible, alcance, cargador, balas, seguro):
-        super().__init__(nombre, tipo, daño, uxt, critico, resistencia, peso, precio, disponible)
+    def __init__(self, nombre, tipo, daño, usos, critico, resistencia, peso, precio, disponible, alcance, cargador, balas, seguro):
+        super().__init__(nombre, tipo, daño, usos, critico, resistencia, peso, precio, disponible)
         self.ALCANCE = alcance
         self.CARGADOR = cargador
         self.BALAS = balas
@@ -47,7 +48,7 @@ class armaproyectil(armabasica):
             if self.BALAS == 0:
                 print("Oops...")
             else:
-                for x in range(self.UXT):
+                for x in range(self.USOS):
                     print("Bang!")
                     self.BALAS -= 1
                

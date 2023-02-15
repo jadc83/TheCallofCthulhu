@@ -57,6 +57,3 @@ class diosmayor(criatura):
         
     def atributos(self):    
         super().atributos()
-        
-cthulhu = primigenio("Cthulhu", dados(24,6), dados(50,6), dados(50,6), dados(19,6), dados(55,6), dados(600,6))
-Nodens = diosmenor("Nodens", dados(20,6), dados(24,6), dados(24,6), dados(24,6), dados(24,6), dados(24,6))
