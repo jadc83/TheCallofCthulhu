@@ -1,4 +1,5 @@
 from dado import dados
+
 class criatura:
     
     def __init__(self, nombre, fuerza, constitucion, tamaño, destreza, inteligencia,  poder):
@@ -33,9 +34,7 @@ class primigenio(criatura):
     
     def __init__(self, nombre, fuerza, constitucion, tamaño, destreza, inteligencia, poder):
         super().__init__(nombre, fuerza, constitucion, tamaño, destreza, inteligencia, poder)
-        
-#METODOS DE PRIMIGENIO VAN AQUI#
-    
+            
     def atributos(self):    
         super().atributos()
 
@@ -46,8 +45,16 @@ class diosmenor(criatura):
     def __init__(self, nombre, fuerza, constitucion, tamaño, destreza, inteligencia, poder):
         super().__init__(nombre, fuerza, constitucion, tamaño, destreza, inteligencia, poder)
         
-#METODOS DE DIOSES MENORES VAN AQUI#
+    def atributos(self):    
+        super().atributos()
+
+#############SUBCLASE DIOSES MAYORES################
+
+class diosmayor(criatura):
     
+    def __init__(self, nombre, fuerza, constitucion, tamaño, destreza, inteligencia, poder):
+        super().__init__(nombre, fuerza, constitucion, tamaño, destreza, inteligencia, poder)
+        
     def atributos(self):    
         super().atributos()
         
