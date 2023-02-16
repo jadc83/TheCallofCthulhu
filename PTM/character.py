@@ -11,7 +11,7 @@ class personaje:
         self.HP = 100
         self.MP = self.INT
         self.__ESTADO = estado
-        self.INVENTARIO = []
+        self.__INVENTARIO = []
 
     def atributos(self):
         """Muestra los atributos"""
@@ -23,7 +23,7 @@ class personaje:
         print(".HP", self.HP)
         print(".MP", self.MP)
         print(".Estado:", self.__ESTADO)
-        print("Inventario\n", [x for x in self.INVENTARIO])
+        print("Inventario\n", [x for x in self.__INVENTARIO])
         
     def esta_vivo(self):
         if self.HP > 0:
@@ -39,17 +39,32 @@ class personaje:
         self.__ESTADO = "Vivo"
         print(self.nombre, "ha resucitado.")
         
-    def recoger(self,objeto):
-        self.INVENTARIO.append(objeto)
+    def recoger(self, objeto):
+        self.__INVENTARIO += objeto
         print("Se ha recogido", objeto.nombre)
     
-    def soltar(self,objeto):
-        self.INVENTARIO.pop(self.INVENTARIO.index(objeto))
+    def soltar(self, objeto):
+        self.__INVENTARIO.pop(self.__INVENTARIO.index(objeto))
         print("Se ha soltado", objeto.nombre)
     
     def mochila(self):
-        for x in self.INVENTARIO:
+        for x in self.__INVENTARIO:
             print(x.nombre)
+            
+    def saquear(self, objetivo):
+        if objetivo.__ESTADO == "Muerto":
+            self.__INVENTARIO += objetivo.__INVENTARIO
+            print(self.nombre, "ha saqueado:")
+            objetivo.mochila()
+            objetivo.__INVENTARIO.clear()
+    
+    def inspeccionar(self, objetivo):
+        print(objetivo.INFO)
+        
+    def registrar(self, objetivo):
+        self.__INVENTARIO += objetivo.INV
+        self.mochila()
+
 
 ############################################################################## METODOS DE COMBATE #######################################################################
 
@@ -68,7 +83,40 @@ class personaje:
             enemigo.morir()
         else:
             print("A", enemigo.nombre,"le quedan", enemigo.HP,"puntos de vida.")
-            
-############################################################################ HABILIDADES ###############################################################################
+                
+############################################################################ METODOS CON ARMAS ###############################################################################
 
-        
+    def disparar(self, arma, objetivo):
+        if arma.SEGURO:
+            print("No dispara")
+        else:
+            if arma.BALAS == 0:
+                print("Oops...")
+            else:
+                for x in range(arma.USOS):
+                    print("Bang!")
+                    arma.BALAS -= 1
+                    objetivo.HP -= arma.DAÑO
+                    if objetivo.HP < 1:
+                        objetivo.morir()
+                        break
+                    
+    def seguro(self, arma):
+        if arma in self.__INVENTARIO:
+            arma.SEGURO = not arma.SEGURO
+            if arma.SEGURO:
+                print("Seguro puesto")
+            elif arma.SEGURO == False:
+                print("Sin seguro.")
+        else:
+            print("No dispones de tal arma.")
+                           
+    def recargar(self, arma):
+        while arma.BALAS != arma.CARGADOR:
+            arma.BALAS += 1
+            print("Plik.")
+    
+    def descargar(self, arma):
+        while arma.BALAS > 0:
+            arma.BALAS -= 1
+            print("Plok.")
