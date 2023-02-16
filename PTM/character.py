@@ -1,3 +1,4 @@
+from dado import dados
 class personaje:
     
     def __init__(self, nombre, fuerza, constitucion, destreza, inteligencia, estado):
@@ -9,7 +10,8 @@ class personaje:
         self.INT = inteligencia
         self.HP = 100
         self.MP = self.INT
-        self.ESTADO = estado
+        self.__ESTADO = estado
+        self.INVENTARIO = []
 
     def atributos(self):
         """Muestra los atributos"""
@@ -20,28 +22,53 @@ class personaje:
         print(".INT:", self.INT)
         print(".HP", self.HP)
         print(".MP", self.MP)
-        print(".Estado:", self.ESTADO)
-    
-    def morir(self):
-            self.ESTADO = "Muerto"
-            print(self.nombre, "ha muerto.")
-    
-    def resucitar(self):
-            self.ESTADO = "Vivo"
-            print(self.nombre, "ha resucitado.")
-#############METODOS DE PERSONAJE VAN AQUI#############
-
-class investigador(personaje):
-    
-    def __init__(self, nombre, fuerza, constitucion, destreza, inteligencia, estado):
-        super().__init__(nombre, fuerza, constitucion, destreza, inteligencia, estado)
-
-        
-    def atributos(self):
-        super().atributos()
+        print(".Estado:", self.__ESTADO)
+        print("Inventario\n", [x for x in self.INVENTARIO])
         
     def esta_vivo(self):
         if self.HP > 0:
             print("Esta vivo.")
         elif self.HP <= 0:
-            self.ESTADO = "Muerto"
+            self.__ESTADO = "Muerto"
+    
+    def morir(self):
+        self.__ESTADO = "Muerto"
+        print(self.nombre, "ha muerto.")
+    
+    def resucitar(self):
+        self.__ESTADO = "Vivo"
+        print(self.nombre, "ha resucitado.")
+        
+    def recoger(self,objeto):
+        self.INVENTARIO.append(objeto)
+        print("Se ha recogido", objeto.nombre)
+    
+    def soltar(self,objeto):
+        self.INVENTARIO.pop(self.INVENTARIO.index(objeto))
+        print("Se ha soltado", objeto.nombre)
+    
+    def mochila(self):
+        for x in self.INVENTARIO:
+            print(x.nombre)
+
+############################################################################## METODOS DE COMBATE #######################################################################
+
+    def puñetazo(self, enemigo):
+        enemigo.HP -= dados(2,4)
+        print(self.nombre, "lanza un puñetazo!")
+        if enemigo.HP < 1:
+            enemigo.morir()
+        else:
+            print("A", enemigo.nombre,"le quedan", enemigo.HP,"puntos de vida.")
+    
+    def patada(self, enemigo):
+        enemigo.HP -= dados(2,6)
+        print(self.nombre, "lanza una patada!!")
+        if enemigo.HP < 1:
+            enemigo.morir()
+        else:
+            print("A", enemigo.nombre,"le quedan", enemigo.HP,"puntos de vida.")
+            
+############################################################################ HABILIDADES ###############################################################################
+
+        

@@ -9,7 +9,8 @@ from weapons import *
 # nombre = subclase(atributo1, atributo2, atributo3....)
 
 
-john = investigador("John Williams", dados(3,6), dados(3,6), dados(3,6), dados(3,6), "Vivo")
+john = personaje("John Williams", dados(3,6), dados(3,6), dados(3,6), dados(3,6), "Vivo")
+macario = personaje("Macario Smith", dados(3,6), dados(3,6), dados(3,6), dados(3,6), "Vivo")
 cuchillo = armabasica("Cuchillo", "CC", 4, 2, 33, 10, 1, 5, "Si")
 revolver = armaproyectil("Revolver", "Fuego", 12, 2, 10, 20, 3, 25, "Si", 20, 6, 6, True)
 cthulhu = primigenio("Cthulhu", dados(24,6), dados(50,6), dados(50,6), dados(19,6), dados(55,6), dados(600,6))
