@@ -1,8 +1,7 @@
-from muebles import mueble
 from dado import dados
 from character import *
 from creature import *
-from weapons import *
+from weapons import armabasica, armaproyectil
 
 #### USO DEL CONSTRUCTOR ####
 # Almacenar en una variable, subclase(Atributo, atributo....)
@@ -16,4 +15,3 @@ Nodens = diosmenor("Nodens", dados(20,6), dados(24,6), dados(24,6), dados(24,6),
 cuchillo = armabasica("Cuchillo", "CC", 4, 2, 33, 10, 1, 5, "Si")
 revolver = armaproyectil("Revolver", "Fuego", 50,  2, 10, 20,  3,  25, "Si", 20,  6,  6, True)
 thompson = armaproyectil("Thompson", "Fuego", 15, 10,  5, 90, 20, 150, "Si", 45, 50, 50, True)
-cajonera = mueble("Cajonera", "Pequeña mesita de noche completamente cubierta de polvo.", 100, [cuchillo, revolver, thompson])
